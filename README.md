@@ -1,2 +1,2 @@
-# Java_
-Java Study Room
+# Python
+Python Study Room
