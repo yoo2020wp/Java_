@@ -7,7 +7,13 @@ print("Index\n")
 
 2. Line 94 ~ 157 -> 여러 줄인 문자열을 변수에 대입하고 싶을 때 (\n, \t... etc)
 
-3. Line 160 ~ -> 문자열 연산하기 (문자열 더하기, 곱하기, 길이 구하기, 인덱싱과 슬라이싱)
+3. Line 160 ~ 236 -> 문자열 연산하기 (문자열 더하기, 곱하기, 길이 구하기, 인덱싱과 슬라이싱)
+
+4. Line 240 ~ 424 -> 문자열 인덱싱과 슬라이싱 
+
+5. Line 429 ~ 441 -> 문자열 안의 문자를 바꿔보기
+
+6. Line 447 ~ ->  문자열 포매팅 (포맷 코드)
 """
 
 """
@@ -236,3 +242,339 @@ a = "\'You need python\'"
 print(a, len(a))
 
 
+"""
+1.문자열 인덱싱과 슬라이싱
+
+인덱싱(Indexing)이란 무엇인가를 '가리킨다'는 의미이고,
+슬라이싱(slicing)은 무엇인가를 '잘라낸다'는 의미이다.
+
+문자열 인덱싱:
+
+L i f e   i s   t o o   s h o r t ,   Y o u   n e e d   P y t h o n
+0                 1                     2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3
+
+"Life is too short, You need Python" 문자열에서 L은 첫 번쨰 자리를 뜻하는 숫자 0,
+바로 다음인 i는 1 이런 식으로 계속 번호를 붙인 것이다. 중간에 있는 short의 s는 12가 된다.
+
+a = "Life is too short, You need Python"
+
+만약 a[5]의 값을 원하면,
+output은 "i"를 출력한다.
+
+
+
+
+
+1.1 문자열 인덱싱 활용하기
+
+a[번호]에는 음수도 사용 가능하다.
+
+음수를 쓰면 문자열 뒤에서부터 출력한다.
+
+
+print(a[-5]) -> 문자열 뒤에서 5번째 자리를 가리킨다.
+print(a[-11]) -> 문자열 뒤에서 11번째 자리를 가리킨다.
+
+
+
+
+1.2 문자열 슬라이싱
+
+문자열 슬라이싱이란 우리가 a에 저장한 문자열에서 "Life"나 "You" 같은 단어를 뽑아낼 수 있다.
+
+아래에 있는 Example #3처럼 해도 무관하지만 더 좋은 방법이있다.
+바로
+a[0:4]
+
+위의 코드에서 뜻하는 것은 a 문자열, "Life is too short, You need Python" 문장에서
+자리 번호 0부터 4까지의 문자를 뽑아낸다는 것이다.
+
+문자열의 인덱스를 보았을 때, a[0]은 L, a[1]은 i, a[2]는 f, a[3]은 e 이므로
+a[0:3]으로도 Life라는 단어를 뽑아낼 수 있을까?
+
+결론은 할 수 없다. Output에 "Lif"로만 출력이 된다.
+
+그러한 이유는 슬라이싱 기법으로 a[시작번호:끝 번호]를 지정할 때 끝 번호에 해당하는 것은
+포함하지 않기 때문이다. a[0:3]을 수식으로 나타내면 다음과 같다.
+
+0 <= a < 3 -> a는 0과 같거나 크지만 3보다는 작다.
+
+따라서 a[0:3]을 만족하는 것은 a[0], a[1], a[2]이다.
+
+그러므로 "Life"를 출력하고 싶으면 a[0:4]가 정답이다.
+
+
+******문자열을 슬라이싱할 때 항상 시작 번호가 0일 필요는 없다.****
+ex) a[0:2] -> Output: Li
+    
+    a[5:7] -> Output: is
+    
+    a[12:17] -> Output: short
+    
+    
+a[시작 번호:끝 번호]에서 끝 번호 부분을 생략하면 시작 번호부터 그 문자열의 끝까지 뽑아낸다. Example #5참고 (Line 344)
+
+
+a[시작 번호: 끝 번호]에서 시작 번호를 생략하면 문자열의 처음부터 끝 번호까지 뽑아낸다. Example #6 참고 (Line 351)
+
+
+a[시작 번호: 끝 번호]에서 시작 번호와 끝 번호를 생략하면 문자열의 처음부터 끝까지를 뽑아낸다. Example #7 참고 (Line 357)
+
+슬라이싱에서도 인덱싱과 마찬가지로 음수(-)를 사용할 수 있다. Example 8 참고 (Line 366)
+"""
+
+#Example #1 인덱싱
+print("\nExample #1 인덱싱")
+a = "Life is too short, You need Python"
+
+print(a[3])
+print(a[12])
+print(a[0], a[1], a[2], a[3], a[4])
+
+
+#Example #2 인덱싱 음수 ver.
+print("\nExample #2 인덱싱 음수")
+print(a[-1])
+print(a[-2])
+
+
+#Example #3 슬라이싱(인덱스를 활용한) ver.
+
+print("\nExample #3 슬라이싱")
+b = a[0] + a[1] + a[2] + a[3]
+
+print(b)
+
+#Example #4 슬라이싱
+print("\nExample #4 슬라이싱")
+print("a에 저장한 문자열에서 \"Life\"를 출력하라.\n")
+print("오답: ", a[0:3])
+print("정답: ", a[0:4])
+
+#Example #5 슬라이싱 활용 (시작번호, 끝번호)
+print("\nExample #5")
+print(a[19:])
+#a[시작 번호: 끝 번호]에서 끝 번호 부분을 생략하면 시작 번호부터 그 문자열의 끝까지 뽑아낸다.
+
+#Example #6 슬라이싱 활용 (시작번호, 끝번호)
+print("\nExample #6")
+print(a[:17])
+print(a[:13])
+#a[시작 번호: 끝 번호]에서 시작 번호를 생략하면 문자열의 처음부터 끝 번호까지 뽑아낸다.
+
+#Example #7 슬라이싱 활용 (시작번호, 끝번호)
+
+print("\nExample #7")
+print(a[:])
+#a[시작 번호: 끝 번호]에서 시작 번호와 끝 번호를 생략하면 문자열의 처음부터 끝까지를 뽑아낸다.
+
+#Example #8 슬라이싱 활용 (시작번호, 끝번호)
+
+print("\nExample #8")
+print(a[19:-7])
+#위 소스코드에서 a[19:7]이 뜻하는 것은 a[19]에서부터 a[-8]까지를 말한다. 이 역시 a[-7]은 포함이 되지 않는다.
+
+hyphen = "-"
+lline = hyphen * 70 + "\n"
+print(lline)
+
+"""
+1.3 슬라이싱으로 문자열 나누기
+
+다음은 자주 사용하게 되는 슬라이싱 기법 중 하나이다.
+
+a = "20010331Rainy"
+date = a[:8]
+weather = a[8:]
+
+date OUTPUT -> 20010331
+weather OUTPUT -> Rainy
+
+위 예는 문자열 a를 두 부분으로 나누는 기법이다. 숫자 8을 기준으로 문자열 a를 양쪽으로 한 번씩 슬라이싱했다. 
+숫자 8을 기준으로 문자열 a를 양쪽으로 한번씩 슬라이싱했다. a[:8]이 포함되지 않고, a[8]을 포함하기 때문에
+8을 기준으로 해서 두 부분으로 나눌 수 있는 것이다. 
+
+위 예는 "20010331Rainy"문자열을 날짜를 나타내는 부분인 "20010331"과 날씨를 나타내는 부분인 "Rainy"로 
+나누는 방법을 보여준다.
+
+위 문자열 "20010331Rainy"를 연도 2001, 월과 일을 나타내는 0331, 날씨를 나타내는 Rainy의 세 부분으로 나누려면
+다음과 같이 할 수 있다:
+
+
+"""
+
+a = "20010331Rainy"
+date = a[:8]
+weather = a[8:]
+
+print(date)
+print(weather)
+
+print(lline)
+#Example #8 문자열을 슬라이싱으로 나누기
+print("20010331Rainy를 연도 2001, 월과 일을 나타내는 0331, 날씨를 나타내는 Rainy의 세 부분으로 나누어라.")
+
+year = a[:4] #-> 처음부터 a[3]까지
+
+month = a[4:8] #-> a[4]부터 a[7]까지
+
+weather = a[8:] #-> a[8]부터 마지막까지
+
+print("year:", year, "\nmonth:", month, "\nweather:", weather)
+
+
+print(lline)
+print("\n")
+
+"""
+2. 문자열 안에 있는 문자를 바꿔보기
+
+Pithon 으로 저장된 문자열을 Python으로 바꾸려면 어떻게 해야 할까?
+
+
+"""
+
+a = "Pithon"
+
+# a[1] = "y" -> 오류가 나온다. 이유는 문자열의 요소값은 바꿀 수 없기 때문이다. (문자열이 Immutable 자료형인 이유)
+
+print(a[:1] + "y" + a[2:]) #-> 슬라이싱을 이용하면 "Pithon"문자열을 "P" 부분과 "thon" 부분으로 나눌 수 있기 때문에
+#                              그 사이에 'y' 문자를 추가하여 "Python"이라는 새로운 문자열을 만들 수 있다.
+
+
+print(lline)
+
+"""
+3. 문자열 포매팅
+
+"현재 온도는 18도 입니다."
+
+해당 문장이 출력된 후 시간이 지나고 다음 문장이 출력된다.
+
+"현재 온도는 20도 입니다."
+
+위 두 문자열은 문장은 같지만 20과 18이라는 숫자만 다른데, 
+이렇게 특정한 값만 바꿔야할 경우가 있을 때 쓰는 방식이
+문자열 포매팅 (Formatting)이다.
+
+쉽게 말해 문자열 안에 어떤 값을 삽입하는 방법이다. 
+
+3.1 숫자 바로 대입
+
+print("I eat %d apples." %3)
+
+Output: I eat 3 apples
+
+위 코드는 문자열 안에 정수 3을 삽입한다.
+문자열 안에 넣고 싶은 자리에 %d 문자를 넣어주고, 삽입할 숫자 3은 가장 뒤에 있는
+%문자 다음에 써 넣었다. 여기에서 "%d"는 문자열 포맷 코드라고 부른다.
+
+
+3.2 문자열 바로 대입
+
+print("I eat %s apples." %"five")
+
+Output: I eat five apples.
+
+위의 코드에는 %d를 넣는 대신 %s를 삽입하였다. 
+
+이를 통해 알 수 있는 점은, 
+숫자는 %d, 문자열은 %s를 넣어야 한다.
+
+3.3 숫자 값을 나타내는 변수로 대입
+number = 3
+
+print("I eat %d apples." %number)
+
+Output: I eat 3 apples.
+
+3.4 2개 이상의 값 넣기
+
+문자열 안에 1개 이상의 값을 넣기 싶을 때는 아래의 코드처럼 하면 된다.
+
+number = 10
+
+day = "three"
+
+print("I ate %d apples. so I was sick for %s days." %(number, day))
+"""
+print(lline)
+
+#Example #9 숫자 대입
+print("Example #9")
+print("I eat %d apples." %3)
+
+print(lline)
+#Example #10 문자열 대입
+print("Example #10")
+print("I eat %s apples." %"five")
+
+print(lline)
+#Example #11 숫자 값을 나타내는 변수로 대입
+print("Example #11")
+number = 3
+
+print("I eat %d apples." %number)
+
+print(lline)
+
+#Example #12 문자열 안에 2개 이상의 값을 넣기
+print("Example #12")
+number = 10
+
+day = "three"
+
+print("I ate %d apples. so I was sick for %s days." %(number, day))
+
+print(lline)
+
+#문자열 포맷 코드 표
+
+"""
+3.5 문자열 포맷 코드 표
+
+코드           Explanation
+%s            문자열(String)
+%c            문자 1개 (Character)
+%d            정수 (Integer)
+%f            부동 소수 (Floating-Point)
+%o            8진수
+%x            16진수
+%%            Literal % (문자 % 자체)
+"""
+
+"""
+3.6 %s 포맷 코드
+여기서 알아갈 점은 %s 포맷 코드인데, 이 코드는 어떤 형태의 값이든 변환해 넣을 수 있다.
+
+print("I have %s apples." %3)
+print("Rate is %s." %3.234)
+
+Output: I have 3 apples.
+Output: Rate is 3.234.
+
+3.7 %를 문자열 안에 출력하고 싶을 때
+
+위의 포맷 코드 표에 나온 것처럼, %%사용하면 문자열 안에 %를 출력할 수 있다.
+
+print("Successful rate is %d%%." %99)
+"""
+
+#Example #13
+print("Example #13")
+print("I have %s apples." %3)
+print("Rate is %s." %3.234)
+
+print(lline)
+
+#Example #14
+print("Example #14")
+print("Successful rate is %d%%." %99)
+
+"""
+3.7 포맷 코드와 숫자 함께 사용하기
+
+위에서 보았듯이, %d, %s 등의 포맷 코드는 문자열 안에 어떤 값을 삽입하기 위해 사용한다.
+하지만 포맷 코드를 숫자와 함께 사용하면 더 유용하게 사용할 수 있다. 
+"""
