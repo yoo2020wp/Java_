@@ -577,4 +577,136 @@ print("Successful rate is %d%%." %99)
 
 위에서 보았듯이, %d, %s 등의 포맷 코드는 문자열 안에 어떤 값을 삽입하기 위해 사용한다.
 하지만 포맷 코드를 숫자와 함께 사용하면 더 유용하게 사용할 수 있다. 
+
+print("%10s" % "hi")
+위의 코드는 %10s는 전체 길이가 10개인 문자열 공간에서 대입되는 값을 오른쪽으로 정렬하고 그 앞의 나머지는 공백으로 남겨두라는 의미이다.
+
+Output: {        hi}
+
+위의 소스코드를 인덱스열로 표현하면 이렇다.
+0 1 2 3 4 5 6 7 h i
+
+0부터 7까지는 공백, h는 8, i는 9에 들어간다
+
+
+반대로 %뒤에 음수를 넣으면 'hi'가 어디로 가는 지 보자.
+print("%-10jane" % 'hi')
+
+
+Output: {hi        jane}
+Output과 같이 hi를 왼쪽으로 정렬하고 나머지는 공백으로 채웠음을 볼 수 있다.
+
+Index -> h i 2 3 4 5 6 7 8 9 j a n e
 """
+
+print(lline)
+
+#Example #15
+print("Example #15")
+print("%10s" % "hi")
+#위의 소스코드를 인덱스열로 표현하면 이렇다.
+#0 1 2 3 4 5 6 7 h i
+
+#0부터 7까지는 공백, h는 8, i는 9에 들어간다
+
+print(lline)
+#Example #16
+print("Example #16")
+print("%-10sjane" % 'hi')
+
+
+"""
+3.8 소수점 표현하기
+
+print("%0.4f" %3.4215555) -> 반올림을 해준다.
+
+%0.4f 의 의미는 3.4215555를 소수점 4번째 자리까지만 나타내고 싶은 경우에 사용한다.
+
+0.4의 "."은 소수점 포인트를 말하고 그 뒤의 숫자 "4"는 소수점 뒤에 나올 숫자의 개수를 말한다.
+
+print("%10.4f" % 3.4215555)
+Output: {    3.4216}
+
+위의 코드는 3.4215555를 소수점 4번째 자리까지만 표시하고 전체 길이가 10개인 문자열 공간에서 오른쪽으로 정렬하는 예를 보여준다.
+Index: "0" "1" "2" "3" 3 . 4 2 1 6 (공백 4개, 전체 길이 10개)
+"""
+
+print(lline)
+#Example #17
+print("Example #17")
+print("%0.4f" %3.4215555)
+
+print(lline)
+#Example #18
+print("Example #18")
+print("%10.4f" % 3.4215555)
+
+"""
+3.9 format 함수를 사용한 포매팅
+
+문자열의 format 함수를 사용하면 좀 더 발전된 스타일로 문자열 포맷을 지정할 수 있다.
+
+print("I eat {0} apples.".format(3))
+
+Output: {I eat 3 apples.}
+"I eat {0} apples" 문자열 중 {0} 부분이 숫자 3으로 바뀌었다.
+
+3.9.1 문자열 바로 대입하기
+print("I eat {0} apples.".format("five"))
+
+3.9.2 숫자 값을 가진 변수로 대입하기
+number = 3
+
+print("I eat {0} apples.".format(number))
+
+3.9.3 2개 이상의 값 넣기
+
+number = 10
+day = "three"
+
+print("I ate {0} apples. so I was sick for {1} days.".format(number, day))
+
+2개 이상의 값을 넣을 경우 문자열의 {0}, {1}과 같은 인덱스 항목이 format 함수의 입력값으로 순서에 맞게 바뀐다.
+즉, 위 예에서 {0}은 format 함수의 첫 번째 입력값인 number로 바뀌고 {1}은 format 함수의 두 번쨰 입력값인 day로 바뀐다.
+
+3.9.4 이름으로 넣기
+
+print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = 3))
+"""
+
+print(lline)
+
+#Example #19
+print("Example #19")
+print("I eat {0} apples.".format(3))
+
+print(lline)
+#Example #20
+print("Example #20")
+print("I eat {0} apples.".format("five"))
+
+
+print(lline)
+
+#Example #21
+print("Example #21")
+
+number = 12
+print("I eat {0} apples.".format(number))
+
+print(lline)
+
+#Example #22
+print("Example #22")
+
+number = 10
+day = "three"
+
+print("I ate {0} apples. so I was sick for {1} days.".format(number, day))
+
+print(lline)
+#Example #23
+print("Example #23")
+
+print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = 3))
+print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = "three"))
