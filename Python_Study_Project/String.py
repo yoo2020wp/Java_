@@ -651,13 +651,22 @@ print("I eat {0} apples.".format(3))
 Output: {I eat 3 apples.}
 "I eat {0} apples" 문자열 중 {0} 부분이 숫자 3으로 바뀌었다.
 
+----------------------------------------------------------------------------------------------------------------------
+
+
 3.9.1 문자열 바로 대입하기
 print("I eat {0} apples.".format("five"))
+
+----------------------------------------------------------------------------------------------------------------------
+
 
 3.9.2 숫자 값을 가진 변수로 대입하기
 number = 3
 
 print("I eat {0} apples.".format(number))
+
+----------------------------------------------------------------------------------------------------------------------
+
 
 3.9.3 2개 이상의 값 넣기
 
@@ -669,9 +678,58 @@ print("I ate {0} apples. so I was sick for {1} days.".format(number, day))
 2개 이상의 값을 넣을 경우 문자열의 {0}, {1}과 같은 인덱스 항목이 format 함수의 입력값으로 순서에 맞게 바뀐다.
 즉, 위 예에서 {0}은 format 함수의 첫 번째 입력값인 number로 바뀌고 {1}은 format 함수의 두 번쨰 입력값인 day로 바뀐다.
 
+----------------------------------------------------------------------------------------------------------------------
+
 3.9.4 이름으로 넣기
 
 print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = 3))
+print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = "three"))
+
+위 코드와 같이{0}, {1}과 같은 인덱스 항목 대신 더 편리한 {name} 형태를 사용하는 방법도 있다. {name} 형태를 사용할 경우
+format 함수에는 반드시 name = value 와 같은 형태의 입력값이 있어야 한다. 
+
+예로 {number} 와 {day}가 format 함수의 입력값인 number = 10, day = "three' 값으로 바뀌는 것을 보여주고 있다.
+
+----------------------------------------------------------------------------------------------------------------------
+
+3.9.5 인덱스와 이름은 혼용해서 넣기
+
+print("I ate {0} apples. so I was sick for {day} days.".format(10, day = 3))
+
+#format(10, day = 3)에서 볼 수 있듯이, 인덱스와 함수 둘 다 활용하여 사용 가능하다.
+
+
+3.9.6 왼쪽 & 오른쪽 & 가운데 정렬
+
+왼쪽 정렬
+print("{0:<10}".format("hi))
+
+Output: {hi        }
+#:<10 표현식을 사용하면 치환되는 문자열을 왼쪽으로 정렬하고 문자열의 총 자릿수를 10으로 맞출 수 있다.
+
+
+
+오른쪽 정렬
+print("{0:>10}".format("hi"))
+
+Output: {        hi}
+오른쪽 정렬은 :< 대신 :>을 사용하면 된다. 화살표 방향을 생각하면 어느 쪽으로 정렬되는지 바로 알 수 있을 것이다.
+
+(왼쪽은 못난 놈, 오른쪽은 좋은 놈)
+
+가운데 정렬
+print("{0:^10}".format("hi"))
+
+Output: {    hi    }
+:^기호를 사용하면 가운데 정렬도 가능하다.
+
+3.9.7 공백 채우기
+print("{0:=^10}".format("hi")) -> Output: ====hi====
+print("{0:!^10}".format("bro")) -> Output: !!!bro!!!
+print("{0:!<10}".format("bro")) -> Output: bro!!!!!!!
+print("{0:!>10}".format("bro")) -> Output: !!!!!!!bro
+정렬할 때 공백 문자 대신에 지정한 문자 값으로 채워 넣는 것도 가능하다. 채워 넣을 문자 값은 정렬 문자 <, >, ^ 바로 앞에 넣어야 한다.
+
 """
 
 print(lline)
@@ -710,3 +768,60 @@ print("Example #23")
 
 print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = 3))
 print("I ate {number} apples. so I was sick for {day} days.".format(number=10, day = "three"))
+
+print(lline)
+
+
+#Example #24
+print("Example #24")
+
+print("I ate {0} apples. so I was sick for {day} days.".format(10, day = 3))
+#format(10, day = 3)에서 볼 수 있듯이, 인덱스와 함수 둘 다 활용하여 사용 가능하다.
+
+"""
+왼쪽 정렬
+print("{0:<10}".format("hi))
+
+오른쪽 정렬
+print("{0:>10}".format("hi"))
+
+가운데 정렬
+print("{0:^10}".format("hi"))
+
+공백 채우기
+print("{0:=^10}".format("hi"))
+print("{0:!^10}".format("bro"))
+print("{0:!<10}".format("bro"))
+print("{0:!>10}".format("bro"))
+"""
+
+print(lline)
+#Example #25
+
+print("Example #25")
+#왼쪽 정렬
+print("{0:<10}".format("hi"))
+#:<10 표현식을 사용하면 치환되는 문자열을 왼쪽으로 정렬하고 문자열의 총 자릿수를 10으로 맞출 수 있다.
+
+
+print(lline)
+#Example #26
+print("Example #26")
+#오른쪽 정렬
+print("{0:>10}".format("hi"))
+
+print(lline)
+#Example #27
+print("Example #27")
+#가운데 정렬
+print("{0:^10}".format("hi"))
+
+print(lline)
+
+#Example #28
+print("Example #28")
+#공백채우기
+print("1. {0:=^10}".format("hi"))
+print("2. {0:!^10}".format("bro"))
+print("3. {0:!<10}".format("bro"))
+print("4. {0:!>10}".format("bro"))
