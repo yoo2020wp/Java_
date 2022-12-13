@@ -1,6 +1,6 @@
 print("---------------------문자열------------------------------")
 
-
+enter = "\n"
 print("Index\n")
 """
 1. Line 10 ~ 89 -> 파이썬에서 문자열을 표현하는 방법
@@ -13,7 +13,9 @@ print("Index\n")
 
 5. Line 429 ~ 441 -> 문자열 안의 문자를 바꿔보기
 
-6. Line 447 ~ ->  문자열 포매팅 (포맷 코드)
+6. Line 447 ~ 937 ->  문자열 포매팅 (포맷 코드, 각종 포맷팅)
+
+7. Line 945 ~ -> 문자열 관련 함수 (내장 함수)
 """
 
 """
@@ -730,6 +732,16 @@ print("{0:!<10}".format("bro")) -> Output: bro!!!!!!!
 print("{0:!>10}".format("bro")) -> Output: !!!!!!!bro
 정렬할 때 공백 문자 대신에 지정한 문자 값으로 채워 넣는 것도 가능하다. 채워 넣을 문자 값은 정렬 문자 <, >, ^ 바로 앞에 넣어야 한다.
 
+
+3.9.8 소수점 표현하기
+
+y = 3.14159265
+
+print("{0:0.4f}".format(y)) -> Output: 3.1416
+print("{0:10.4f}".format(y)) -> Output: {    3.1416} -> 10개의 인덱스에서 오른쪽으로 3.1416
+
+3.8에서 배웠던 것처럼 사용이 가능하다.
+
 """
 
 print(lline)
@@ -825,3 +837,250 @@ print("1. {0:=^10}".format("hi"))
 print("2. {0:!^10}".format("bro"))
 print("3. {0:!<10}".format("bro"))
 print("4. {0:!>10}".format("bro"))
+
+
+print(lline)
+
+#Example #29
+print("Example #29")
+
+y = 3.14159265
+
+print("{0:0.4f}".format(y))
+print("{0:10.4f}".format(y))
+
+"""
+3.9.9 {또는} 문자 표현하기
+
+print("{{and}}".format())
+"""
+
+print(lline)
+#Example #30
+print("Example #30")
+print("{{and}}".format())
+print("{{However}}".format())
+print("{{Putting two Curly Brackets makes you print a curly bracket}}".format())
+
+"""
+3.10 f문자열 포매팅
+
+파이썬 "3.6" 버전부터는 f문자열 포매팅 기능을 사용할 수 있다. (파이썬 3.6 미만에서는 불가.)
+
+
+name = "Hunter"
+
+Age = 22
+
+print(f"My name is {name}, and I am {Age} years old.")
+print(f"My name is {name}, and I am {Age + 1} years old in Korea")
+
+위와 같이 변수들을 선언하고 "쓰고 싶은 문장들"의 Quotation 앞쪽에 "f"를 넣어준다.
+"""
+print(lline)
+
+#Example #31
+print("Example #31")
+name = "Hunter"
+
+Age = 22
+
+print(f"My name is {name}, and I am {Age} years old.")
+print(f"My name is {name}, and I am {Age + 1} years old in Korea")
+
+"""
+3.10.1 딕셔너리를 사용한 f 문자열 포매팅
+
+dic = {'name':"Hunter", "age": 22}
+print(f"My name is {d['name']}, and I am {d["age"]} years old.")
+"""
+
+print(lline)
+
+#Example #31
+print("Example #31")
+
+dic = {'name':"Hunter", "age": 22}
+print(f"My name is {dic['name']}, and I am {dic['age']} years old.")
+print(f'My name is {dic["name"]}, and I am {dic["age"]} years old.')
+#TIP: Make Sure to remember to use 'Single Quotation' when you are using "Double Quotation" with print function.
+#     Make Sure to remember to use "Double Quotation" when you are using 'Single Quotation' with print function.
+
+print(lline)
+
+#총정리
+"""
+총정리:
+
+print(f"{"hi":<10}")
+"""
+print("Review")
+print(f".{'hi':<10}.   -> 왼쪽 정렬 (< 사용)")
+print(f'.{"hi":>10}.   -> 오른쪽 정렬 (> 사용)')
+print(f".{'hi':^10}.   -> 가운데 정렬 (^ 사용)")
+print(f'.{"hi":=^10}.  -> 공백 채우기 (= 로 채움)')
+print(f".{'hi':!^10}.  -> 공백 채우기 (! 로 채움)")
+print("\n")
+#소수점 표현하기
+y = 3.14159265
+
+print(f"pi is equal to .{y:0.4f}.  -> 소수점 4자리까지만 표현 (반올림 O)") 
+print(f'pi is equal to .{y:10.4f}. -> 소수점 4자리 표현, 총 자릿수 10칸 맞춤')
+
+
+print(lline)
+#String_Quiz #2
+print("String Formatting Quiz")
+print("format 함수 또는 f 문자열 포매팅을 사용해 '!!!python!!!' 문자열을 출력해보자.")
+
+#Answers
+print(f"{'python':!^12}") #-> My answer
+
+print("{0:!^12}".format('python')) #-> This is also correct
+
+print(lline)
+print("-" * 70)
+
+"""
+4. Functions Related to String 문자열 관련 함수
+
+문자열 자료형은 자체적으로 함수를 가지고 있다. a.k.a 내장 함수라고 부른다.
+내장 함수를 사용하려면 문자열 변수 이름 뒤에 '.'를 붙인 다음에 함수 이름을 써주면 된다.
+
+문자열의 내장 함수 (아래 코드들)
+"""
+
+#1. 문자 개수 세기 (count)
+print("1. 문자 개수 세기 {count}")
+a = "hobby"
+b = "ascertain"
+print(a.count("b")) #-> a에 저장한 변수에서 'b'의 개수를 돌려준다.
+print(b.count("a")) #-> b에 저장한 변수에서 'a'의 개수를 돌려준다.
+
+print(enter)
+
+#2. 위치 알려주기 1 (find)
+print("2. 위치 알려주기 1 {find}")
+a = "Python is the best choice"
+print(a.find('b'))
+#Output이 14로 나올텐데, 문자열에서 'b'가 처음 나온 위치이다.
+
+print(a.find('k'))
+#Output에 -1이 나올텐데, 이러한 이유는 찾는 문자나 문자열이 존재하지 않기 때문이다.
+print(a.find('z'))
+
+print(enter)
+
+#3. 위치 알려주기 2 (index)
+print("3. 위치 알려주기 2 {index}")
+
+a = "Life is too short"
+
+print(a.index('t'))
+#find 함수와 같이 맨 처음으로 나온 위치를 반환한다.
+
+#print(a.index('K'))
+#982번 코드는 오류가 나는데, 그 이유는 "index"함수를 사용할 때
+#찾는 문자나 문자열이 없으면 "오류"가 발생한다.
+
+print(enter)
+
+#4. 문자열 삽입 (join)
+print("4. 문자열 삽입 {join}")
+
+print(",".join('abcd'))
+
+"""
+abcd 문자열의 각각의 문자에 ','를 삽입한다.
+join 함수를 문자열 뿐만 아니라 앞으로 배울 리스트나 튜플도 입력으로 사용할 수 있다.
+join 함수의 입력으로 리스트를 사용하는 예는 아래 코드이다.
+"""
+
+print("\n4.1 문자열 삽입 (리스트를 사용한 join)")
+print(",".join(['a', 'b', 'c', 'd']))
+
+
+print(enter)
+
+#5. 소문자를 대문자로 바꾸기 (upper)
+print("5. 소문자를 대문자로 바꾸기 {upper}")
+
+a = "bruh"
+print(a.upper())
+print("Output: BRUH")
+print("upper 함수는 모든 소문자를 대문자로 바꾸어 준다.")
+print("만약 문자열이 이미 대문자라면 아무 변화도 일어나지 않는다.")
+
+print(enter)
+
+#6. 대문자를 소문자로 바꾸기 (lower)
+print("6. 대문자를 소문자로 바꾸기 (lower)")
+
+a = "RNSEO WHWRKXEK"
+print(a.lower())
+print("Output: rnseo whwrkxek")
+print("lower 함수는 모든 대문자를 소문자로 바꾸어준다")
+
+print(enter)
+
+#7. 왼쪽 공백 지우기 (lstrip)
+print("7. 왼쪽 공백 지우기 (lstrip)")
+
+a = "     python     "
+
+print(a.lstrip())
+print("Output: \"python     \"")
+print("문자열 중 가장 왼쪽에 있는 한 칸 이상의 연속된 공백들을 모두 지운다. lstrip에서 l은 'left'를 의미한다.")
+
+
+print(enter)
+
+#8. 오른쪽 공백 지우기 (rstrip)
+print("8. 오른쪽 공백 지우기 (rstrip)")
+
+a = "     python     "
+
+print(a.rstrip())
+print("Output: \"     python\"")
+print("문자열 중 가장 오른쪽에 있는 한 칸 이상의 연속된 공백들을 모두 지운다. rstrip에서 r는 'right'을 의미한다.")
+      
+print(enter)
+      
+#9. 양쪽 공백 지우기 (strip)
+print("9. 양쪽 공백 지우기 (strip)")
+
+a = "     python     "
+print(a.strip())
+print("Output: {python}")
+print("문자열 양쪽에 있는 한 칸 이상의 연속된 공백을 모두 지운다.")
+
+print(enter)
+
+#10. 문자열 바꾸기 (replace)
+print("10. 문자열 바꾸기 (replace)")
+
+a = "21 Months are too short"
+
+print("Original Sentence:", a)
+print("Output: ", a.replace("short", "long"))
+print(a.replace("short", "long"))
+print("\nreplace(바뀌게 될 문자열, 바꿀 문자열)처럼 사용해서\n문자열 안의 특정한 값을 다른 값으로 치환해준다.")
+
+print(enter)
+#11. 문자열 나누기(split)
+print("11. 문자열 나누기(split)")
+
+a = "Life is too short"
+print("Output: ", a.split())
+
+
+b = "a:b:c:d"
+
+print("Output: ", b.split(':'))
+
+"""
+split 함수는 a.split()처럼 괄호 안에 아무 값도 넣어주지 않으면 공백(스페이스, 탭, 엔터 등)을 기준으로 문자열을 나누어준다.
+만약 b.split(':')처럼 괄호 안에 특정 값이 있을 경우에는 괄호 안의 값을 구분자로 해서 문자열을 나누어준다. 이렇게 나눈 값은 리스트에 하나씩 들어가게 된다. 
+
+위 11개의 문자열 관련 함수는 문자열 처리에서 사용 빈도가 매우 높고 유용하다. 이 외의 함수가 더 있긴 하지만 자주 사용되지는 않는다. 
+"""
